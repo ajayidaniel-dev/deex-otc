@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { mockUser } from "@/lib/mock-data";
+import { useState } from "react";
+import { NotificationsModal } from "@/components/modals/notifications-modal";
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -20,6 +22,7 @@ interface HeaderProps {
 
 export function Header({ onMenuClick, title }: HeaderProps) {
   const notifications = 1;
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
 
   return (
     <header className="bg-[#1a1a1a] border-b border-gray-800 sticky top-0 z-30">
@@ -30,7 +33,7 @@ export function Header({ onMenuClick, title }: HeaderProps) {
             variant="ghost"
             size="sm"
             onClick={onMenuClick}
-            className="text-white hover:bg-gray-800"
+            className="text-white hover:bg-gray-800 lgsm:hidden"
           >
             <Menu className="h-6 w-6" />
           </Button>
@@ -41,6 +44,14 @@ export function Header({ onMenuClick, title }: HeaderProps) {
               <span className="text-white font-bold text-sm">C</span>
             </div>
             <span className="text-white font-semibold text-lg">DeeX Desk</span>
+            {/* {title && (
+              <>
+                <span className="text-gray-500">/</span>
+                <span className="text-white font-semibold text-lg">
+                  {title}
+                </span>
+              </>
+            )} */}
           </div>
         </div>
 
@@ -52,6 +63,7 @@ export function Header({ onMenuClick, title }: HeaderProps) {
               variant="ghost"
               size="sm"
               className="text-white hover:bg-gray-800 relative"
+              onClick={() => setNotificationsOpen(true)}
             >
               <Bell className="h-5 w-5" />
               {notifications > 0 && (
@@ -102,6 +114,10 @@ export function Header({ onMenuClick, title }: HeaderProps) {
           </DropdownMenu>
         </div>
       </div>
+      <NotificationsModal
+        open={notificationsOpen}
+        onOpenChange={setNotificationsOpen}
+      />
     </header>
   );
 }

@@ -23,5 +23,5 @@ const pwaConfig = {
     },
   ],
 };
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default withPWA(pwaConfig)(nextConfig as any);

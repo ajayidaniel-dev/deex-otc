@@ -33,14 +33,14 @@ export function DashboardPage() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Button
+          {/* <Button
             variant="ghost"
             size="sm"
             onClick={() => refetch()}
             className="text-gray-400 hover:text-white"
           >
             Refresh
-          </Button>
+          </Button> */}
           <DepositButton />
         </div>
       </div>

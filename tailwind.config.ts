@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -10,6 +12,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -44,6 +47,21 @@ const config: Config = {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
       },
+      fontFamily: {
+        sora: ["Sora", "sans-serif"],
+        manrope: ["Manrope", "sans-serif"],
+      },
+       screens: {
+        xxs: "400px",
+        xs: "480px",
+        mds: "600px",
+        md: "800px",
+        lgss: "976px",
+        lgsm: "1024px",
+        lg: "1200px",
+        xxl: "1300px",
+        xxxl: "1650px",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -51,6 +69,7 @@ const config: Config = {
       },
     },
   },
+  
   plugins: [require("tailwindcss-animate")],
 };
 

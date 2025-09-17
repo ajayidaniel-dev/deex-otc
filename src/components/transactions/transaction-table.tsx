@@ -1,6 +1,6 @@
 "use client";
 
-import { MoreHorizontal } from "lucide-react";
+import { FiMoreHorizontal } from "react-icons/fi";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -67,7 +67,8 @@ export function TransactionTable({
           No transactions found
         </h3>
         <p className="text-gray-400">
-          Try adjusting your search or filter to find what you're looking for.
+          Try adjusting your search or filter to find what you&apos;re looking
+          for.
         </p>
       </div>
     );
@@ -75,25 +76,30 @@ export function TransactionTable({
 
   return (
     <div className="space-y-4">
-      {transactions.map((transaction, index) => (
+      {transactions.map((transaction) => (
         <div
           key={transaction.id}
           className="bg-[#2c2c2c] rounded-lg p-4 border border-gray-700 hover:border-gray-600 transition-colors"
         >
-          <div className="flex justify-between items-start">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
             {/* Amount Column */}
-            <div className="flex-1">
-              <div className="text-lg font-semibold text-white">
+            <div className="flex-1 min-w-0">
+              <div className="md:hidden text-xs text-gray-400 mb-1">Amount</div>
+              <div className="text-lg font-semibold text-white truncate">
                 {transaction.amount} {transaction.currency}
               </div>
               <div className="text-sm text-gray-400">
                 {transaction.exchangeRate}
               </div>
+              <div className="mt-2 text-xs text-gray-400 md:hidden">
+                {transaction.date}, {transaction.time}
+              </div>
             </div>
 
             {/* Payout Amount Column */}
-            <div className="flex-1 text-center">
-              <div className="text-lg font-semibold text-white">
+            <div className="flex-1 min-w-0 md:text-center">
+              <div className="md:hidden text-xs text-gray-400 mb-1">Payout</div>
+              <div className="text-lg font-semibold text-white truncate">
                 {transaction.payoutAmount} {transaction.payoutCurrency}
               </div>
               <div className="text-sm text-gray-400">
@@ -104,15 +110,17 @@ export function TransactionTable({
               </div>
             </div>
 
-            {/* Status Column */}
-            <div className="flex items-center space-x-3">
-              <Badge
-                className={`${getStatusColor(
-                  transaction.status
-                )} text-white font-medium px-3 py-1`}
-              >
-                {transaction.status.toUpperCase()}
-              </Badge>
+            {/* Status / Actions */}
+            <div className="flex items-center justify-between md:justify-end gap-3">
+              <div className="flex items-center gap-3">
+                <Badge
+                  className={`${getStatusColor(
+                    transaction.status
+                  )} text-white font-medium px-3 py-1`}
+                >
+                  {transaction.status.toUpperCase()}
+                </Badge>
+              </div>
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -121,7 +129,7 @@ export function TransactionTable({
                     size="sm"
                     className="text-gray-400 hover:text-white"
                   >
-                    <MoreHorizontal className="h-4 w-4" />
+                    <FiMoreHorizontal className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
@@ -139,8 +147,8 @@ export function TransactionTable({
             </div>
           </div>
 
-          {/* Date */}
-          <div className="mt-3 text-sm text-gray-400">
+          {/* Date for md+ */}
+          <div className="hidden md:block mt-3 text-sm text-gray-400">
             {transaction.date}, {transaction.time}
           </div>
         </div>

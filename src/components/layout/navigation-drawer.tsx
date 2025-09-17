@@ -23,7 +23,7 @@ interface NavigationDrawerProps {
   onClose: () => void;
 }
 
-const navigationItems = [
+export const navigationItems = [
   { href: "/", label: "Dashboard", icon: Home },
   { href: "/transactions", label: "Transactions", icon: BarChart3 },
   { href: "/capture-transaction", label: "Capture Transaction", icon: Target },
