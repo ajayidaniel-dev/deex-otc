@@ -16,7 +16,7 @@ const colorVariants = {
   gray: "bg-gradient-to-br from-gray-500 to-gray-600",
 };
 
-export function MetricCard({ metric, index }: MetricCardProps) {
+export function MetricCard({ metric }: MetricCardProps) {
   return (
     <div className="hover:scale-105 transition-transform duration-200">
       <Card className="card-dark border-0 overflow-hidden">

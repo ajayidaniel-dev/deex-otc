@@ -20,7 +20,7 @@ interface HeaderProps {
   title?: string;
 }
 
-export function Header({ onMenuClick, title }: HeaderProps) {
+export function Header({ onMenuClick }: HeaderProps) {
   const notifications = 1;
   const [notificationsOpen, setNotificationsOpen] = useState(false);
 

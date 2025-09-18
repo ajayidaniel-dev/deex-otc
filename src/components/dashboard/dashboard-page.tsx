@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export function DashboardPage() {
-  const { data: metrics, isLoading, refetch } = useDashboardMetrics();
+  const { data: metrics, isLoading } = useDashboardMetrics();
 
   if (isLoading) {
     return (

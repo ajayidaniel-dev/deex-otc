@@ -60,10 +60,6 @@ export function NotificationsModal({
     setItems((prev) => prev.map((n) => ({ ...n, read: true })));
   }
 
-  function clearAll() {
-    setItems([]);
-  }
-
   function toggleRead(id: string) {
     setItems((prev) =>
       prev.map((n) => (n.id === id ? { ...n, read: !n.read } : n))
